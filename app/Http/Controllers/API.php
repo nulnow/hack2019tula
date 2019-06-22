@@ -68,7 +68,10 @@ class API extends Controller
 
     public function printTest()
     {
+        $fpdi = new \fpdi\FPDI();
+        $fpdf = new \fpdf\FPDF();
 
+        return 'fefe';
     }
 
     public function printDocument(Document $document)
