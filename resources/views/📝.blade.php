@@ -10,5 +10,8 @@
 <body>
     <div id="editor"></div>
     <script src="/js/app.js"></script>
+    <?php 
+        echo "Дай 200 рублей!!!"
+    ?>
 </body>
 </html>
