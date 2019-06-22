@@ -66,11 +66,15 @@ class API extends Controller
         }
     }
 
+    public function printTest()
+    {
+
+    }
+
     public function printDocument(Document $document)
     {
-        require(base_path('vendor/setasign/fpdi/src/autoload.php'));
-        $fpdf = new \setasign\Fpdi\TcpdfFpdi();
-        // $pdf->setSourceFile('');
+        $fpdi = new \fpdi\FPDI();
+        $fpdf = new \fpdf\FPDF();
 
         return 'fefe';
     }

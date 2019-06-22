@@ -9,6 +9,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/addDocumentForm', 'API@addDocumentFrom');
 Route::post('/addDocument', 'API@addDocument');
+Route::get('/printDocument', 'API@printTest');
 Route::get('/printDocument/{document}', 'API@printDocument');
 
 Route::get('/editor', 'API@📝');
