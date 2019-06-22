@@ -18,4 +18,26 @@ class 😎😎😎 extends Controller
     {
         return Document::all();
     }
+
+    public function 📝()
+    {
+        return view('📝');
+    }
+
+    public function add📄(Request $request)
+    {
+        try {
+            $📄 = new Document();
+
+            $📄->json_body = $request->input('json_body');
+            $📄->type = 1;
+    
+            $📄->save();
+            $📄->refresh();
+    
+            return $📄;
+        } catch(\Exception $e) {
+            return $e;
+        }
+    }
 }
