@@ -12,7 +12,12 @@
         "arcanedev/log-viewer": "~4.7.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "rospdf/pdf-php": "^0.12.52",
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.2",
+        "setasign/fpdi-fpdf": "^2.2",
+        "zendframework/zendpdf": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

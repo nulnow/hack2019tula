@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ data = [], filter = '', onEditOrSaveClick, editableItem }) => <table className="data-grid__data-table">
+export default ({ data = [], filter = '', onEditOrSaveClick, editableItem, onPrintClick }) => <table className="data-grid__data-table">
 <tbody className="data-grid__data-table-tbody">
   {
     (data.length || null) && (
@@ -27,6 +27,9 @@ export default ({ data = [], filter = '', onEditOrSaveClick, editableItem }) => 
               }} />
           ))
         }
+        <td>
+            <button onClick={() => onPrintClick(item.id)}>Печать</button>
+          </td>
       </tr>   
     ))
   }

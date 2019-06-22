@@ -15,5 +15,12 @@ require('./bootstrap');
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+import AddDocumentForm from './components/AddDocumentForm';
 
-ReactDOM.render(<App />, document.getElementById('editor'));
+if (document.getElementById('editor')) {
+    ReactDOM.render(<App />, document.getElementById('editor'));
+}
+
+if (document.getElementById('addDocument')) {
+    ReactDOM.render(<AddDocumentForm />, document.getElementById('addDocument'));
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "name": "date",
+        "label": "Дата"
+    },
+    {
+        "name": "fio",
+        "label": "Фио"
+    },
+    {
+        "name": "doctor",
+        "label": "Врач"
+    }
+]

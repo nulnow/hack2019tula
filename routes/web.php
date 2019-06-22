@@ -4,13 +4,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/addDocumentForm', 'API@addDocumentFrom');
+Route::post('/addDocument', 'API@addDocument');
+Route::get('/printDocument/{document}', 'API@printDocument');
 
-Route::get('/editor', '😎😎😎@📝');
-Route::post('/add', '😎😎😎@add📄');
+Route::get('/editor', 'API@📝');
+Route::post('/add', 'API@add📄');
+
+Route::get('/doctypes', 'API@docTypes');
 
 Auth::routes();
 
@@ -25,6 +29,6 @@ Route::middleware(['role:admin'])->prefix('web-api')->group(function() {
     });
 });
 
-Route::middleware(['auth', 'role:admin'])->get('/uuuu', '😎😎😎@😎');
-Route::middleware(['auth', 'role:admin'])->get('/documents', '😎😎😎@documents');
-Route::middleware(['auth', 'role:admin'])->get('/documents-parsed', '😎😎😎@documentsParsed');
+Route::middleware(['auth', 'role:admin'])->get('/uuuu', 'API@😎');
+Route::middleware(['auth', 'role:admin'])->get('/documents', 'API@documents');
+Route::middleware(['auth', 'role:admin'])->get('/documents-parsed', 'API@documentsParsed');

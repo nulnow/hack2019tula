@@ -31,6 +31,7 @@ class App extends React.Component {
     this.onFilterChange = this.onFilterChange.bind(this)
     this.onPerPageChange = this.onPerPageChange.bind(this)
     this.onDocumentAdd = this.onDocumentAdd.bind(this)
+    this.onPrintClick = this.onPrintClick.bind(this)
   }
 
   componentDidMount() {
@@ -111,6 +112,15 @@ class App extends React.Component {
       editableItem: null
     });
   }
+  
+  onPrintClick(id) {
+    fetch('/printDocument/' + id, {method: 'POST'})
+      .then(res => res.text())
+      .then(link => {
+        console.log(link)
+        window.open(window.location.origin + link)
+      })
+  }
 
   render() {
     const { data, filter, editableItem, currentPage, perPage, dataUrl } = this.state;
@@ -153,6 +163,7 @@ class App extends React.Component {
           <Table
             data={dataOnThePage}
             filter={filter}
+            onPrintClick={this.onPrintClick}
           />
         </div>
       </div>
