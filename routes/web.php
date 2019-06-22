@@ -22,6 +22,5 @@ Route::middleware(['role:admin'])->prefix('web-api')->group(function() {
     });
 });
 
-Route::middleware(['auth', 'role:admin'])->get('/uuuu', function() {
-    return 'kek';
-});
+Route::middleware(['auth', 'role:admin'])->get('/uuuu', '😎😎😎@😎');
+Route::middleware(['auth', 'role:admin'])->get('/documents', '😎😎😎@documents');
