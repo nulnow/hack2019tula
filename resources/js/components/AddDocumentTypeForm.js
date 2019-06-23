@@ -183,7 +183,7 @@ class AddDocumentTypeForm extends React.Component {
                 </label>
             </div>
             <div>
-                <input type="file" ref={component => {this.fileInput = component}} onChange={this.onFileChante} />
+                <input type="file" accept=".jpg" ref={component => {this.fileInput = component}} onChange={this.onFileChante} />
             </div>
             {this.state.selectedFileUrl &&
                 <img
