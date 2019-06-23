@@ -12,9 +12,6 @@ class Landos extends React.Component {
                 <div className="jubmo__moc"></div>
                 <div className="jubmo__moc2"></div>
             </div>
-            /*<div className="container">
-                <h1>Как пользоваться:</h1>
-            </div>*/
         </>
     }
 }
