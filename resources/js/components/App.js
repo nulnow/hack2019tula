@@ -2,9 +2,8 @@ import React from 'react';
 import Spinner from './Spinner';
 import Table from './Table';
 import Filters from './Filters';
-import Add from './Add';
 
-const DEFAULT_URL = 'http://localhost:8000/documents';
+const DEFAULT_URL = location.origin + '/documents';
 
 class App extends React.Component {
 
@@ -31,6 +30,7 @@ class App extends React.Component {
     this.onFilterChange = this.onFilterChange.bind(this)
     this.onPerPageChange = this.onPerPageChange.bind(this)
     this.onDocumentAdd = this.onDocumentAdd.bind(this)
+    this.onPrintClick = this.onPrintClick.bind(this)
   }
 
   componentDidMount() {
@@ -111,6 +111,16 @@ class App extends React.Component {
       editableItem: null
     });
   }
+  
+  onPrintClick(id) {
+    fetch('/printDocument/' + id)
+      .then(res => res.text())
+      .then(link => {
+        console.log(link)
+        const imgWindow = window.open(window.location.origin + link)
+        imgWindow.print()
+      })
+  }
 
   render() {
     const { data, filter, editableItem, currentPage, perPage, dataUrl } = this.state;
@@ -132,13 +142,10 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        <div className="data-grid">
-          <h1>Просмотрщик документов</h1>
-          <Add onDocumentAdd={this.onDocumentAdd} />
-          <Filters
+        <div className="Card">
+        <Filters
             onFilterChange={this.onFilterChange}
             onPerPageChange={this.onPerPageChange}
-            onDataUrlSet={this.onDataUrlSet}
             onCurrentPageChange={this.onCurrentPageChange}
             onDataUrlInputChange={this.onDataUrlInputChange}
             pages={pages}
@@ -153,6 +160,7 @@ class App extends React.Component {
           <Table
             data={dataOnThePage}
             filter={filter}
+            onPrintClick={this.onPrintClick}
           />
         </div>
       </div>

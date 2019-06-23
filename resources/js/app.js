@@ -14,6 +14,8 @@ require('./bootstrap');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import MedContructor from './components/MedContructor';
 
-ReactDOM.render(<App />, document.getElementById('editor'));
+if (document.getElementById('react')) {
+    ReactDOM.render(<MedContructor />, document.getElementById('react'));
+}

@@ -4,7 +4,6 @@ export default (props) => {
     const { 
         onFilterChange,
         onPerPageChange,
-        onDataUrlSet,
         onCurrentPageChange,
         pages,
         onDataUrlInputChange,
@@ -12,17 +11,6 @@ export default (props) => {
     } = props;
 
     return (<div className="data-grid__filters">
-        <label className="data-grid__label" style={{width: '50%'}}>
-            <span className="data-grid__label-span">Data URL:</span>
-            <input
-                style={{width: '100%'}}
-                className="data-grid__search-input"
-                defaultValue={defaultDataUrl}
-                placeholder="filter items"
-                onChange={onDataUrlInputChange}
-            />
-            <button onClick={onDataUrlSet}>Set new data url</button>
-        </label>
         <label className="data-grid__label">
         <span className="data-grid__label-span">Search:</span>
         <input
