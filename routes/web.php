@@ -6,16 +6,23 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::view('/', 'react');
+Route::view('/add-document', 'react');
+Route::view('/my-documents', 'react');
+Route::view('/add-document-type', 'react');
+
+Route::get('/documents', 'API@documents');
+
+Route::get('/doctypes', 'API@docTypes');
+Route::post('/doctypes', 'API@addDoctype');
+
+Route::post('/upload-file', 'API@upload');
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/addDocumentForm', 'API@addDocumentFrom');
-Route::post('/addDocument', 'API@addDocument');
+Route::post('/documents', 'API@addDocument');
 Route::get('/printDocument', 'API@printTest');
 Route::get('/printDocument/{document}', 'API@printDocument');
 
-Route::get('/editor', 'API@📝');
-Route::post('/add', 'API@add📄');
-
-Route::get('/doctypes', 'API@docTypes');
 
 Auth::routes();
 
@@ -30,6 +37,3 @@ Route::middleware(['role:admin'])->prefix('web-api')->group(function() {
     });
 });
 
-Route::middleware(['auth', 'role:admin'])->get('/uuuu', 'API@😎');
-Route::middleware(['auth', 'role:admin'])->get('/documents', 'API@documents');
-Route::middleware(['auth', 'role:admin'])->get('/documents-parsed', 'API@documentsParsed');

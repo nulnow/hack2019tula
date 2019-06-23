@@ -2,7 +2,6 @@ import React from 'react';
 import Spinner from './Spinner';
 import Table from './Table';
 import Filters from './Filters';
-import Add from './Add';
 
 const DEFAULT_URL = 'http://localhost:8000/documents';
 
@@ -114,11 +113,13 @@ class App extends React.Component {
   }
   
   onPrintClick(id) {
-    fetch('/printDocument/' + id, {method: 'POST'})
+    fetch('/printDocument/' + id)
       .then(res => res.text())
       .then(link => {
         console.log(link)
-        window.open(window.location.origin + link)
+        const imgWindow = window.open(window.location.origin + link)
+        imgWindow.focus()
+        imgWindow.print()
       })
   }
 
@@ -143,12 +144,9 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="data-grid">
-          <h1>Просмотрщик документов</h1>
-          <Add onDocumentAdd={this.onDocumentAdd} />
-          <Filters
+        <Filters
             onFilterChange={this.onFilterChange}
             onPerPageChange={this.onPerPageChange}
-            onDataUrlSet={this.onDataUrlSet}
             onCurrentPageChange={this.onCurrentPageChange}
             onDataUrlInputChange={this.onDataUrlInputChange}
             pages={pages}

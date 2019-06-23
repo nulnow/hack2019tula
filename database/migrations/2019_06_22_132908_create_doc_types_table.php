@@ -15,7 +15,7 @@ class CreateDocTypesTable extends Migration
     {
         Schema::create('doc_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('type');
+            $table->string('url');
             $table->string('name');
             $table->text('fields');
             $table->timestamps();

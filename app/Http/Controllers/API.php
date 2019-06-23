@@ -5,18 +5,41 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Document;
 use App\DocType;
-use setasign\Fpdi;
+use setasign\Fpdi\Fpdi;
+use setasign\Fpdi\PdfReader;
+
+use setasign\Fpdi\PdfParser\StreamReader;
+
+use Illuminate\Support\Str;
+
 
 class API extends Controller
 {
-    public function addDocumentFrom()
-    {
-        return view('addDocumentForm');
-    }
 
     public function docTypes()
     {
         return DocType::all();
+    }
+
+    public function addDoctype(Request $request)
+    {
+        $doctypeName = $request->input('name');
+        $fileUrl = $request->input('url');
+        $fields = $request->input('fields');
+
+        $docType = new DocType();
+        $docType->name = $doctypeName;
+        $docType->url = $fileUrl;
+        $docType->fields = json_encode($fields);
+        $docType->save();
+        $docType->refresh();
+
+        return $docType;
+    }
+
+    public function documents()
+    {
+        return Document::all();
     }
 
     public function addDocument(Request $request)
@@ -32,21 +55,6 @@ class API extends Controller
         $document->refresh();
 
         return $document;
-    }
-
-    public function 😎()
-    {
-        return '🥪👀😊😂🤣';
-    }
-
-    public function documents()
-    {
-        return Document::all();
-    }
-
-    public function 📝()
-    {
-        return view('📝');
     }
 
     public function add📄(Request $request)
@@ -66,19 +74,33 @@ class API extends Controller
         }
     }
 
-    public function printTest()
+    public function printDocument(Document $document, Request $request)
     {
-        $fpdi = new \fpdi\FPDI();
-        $fpdf = new \fpdf\FPDF();
+        $type = $document->type;
+        $docType = DocType::find($type);
+        $realFields = json_decode($document->json_body, true);
+        $typeFields = \json_decode($docType->fields, true);
 
-        return 'fefe';
+        $img = imagecreatefromjpeg(base_path('storage/app/' . $docType->url));
+        $font = base_path("public/times.ttf");
+
+        foreach($typeFields as $typeField) {
+            imagettftext($img, 10, 0, $typeField['cords'][0], $typeField['cords'][1], 0, $font, $realFields[$typeField['name']]);
+        }
+
+        // OUTPUT IMAGE
+        header('Content-type: image/jpeg');
+        imagejpeg($img, base_path("storage/app/public/helloImg.jpg"));
+        imagedestroy($img);
+        return '/storage/helloImg.jpg';
     }
 
-    public function printDocument(Document $document)
+    public function upload(Request $request)
     {
-        $fpdi = new \fpdi\FPDI();
-        $fpdf = new \fpdf\FPDF();
-
-        return 'fefe';
+        if ($request->hasFile('img')) {
+            $imgHash = Str::random(10);;
+            return $path = $request->img->storeAs('public', "$imgHash.jpg");
+        }
+        return 'kek';
     }
 }

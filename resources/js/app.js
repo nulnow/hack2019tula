@@ -14,13 +14,8 @@ require('./bootstrap');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
-import AddDocumentForm from './components/AddDocumentForm';
+import MedContructor from './components/MedContructor';
 
-if (document.getElementById('editor')) {
-    ReactDOM.render(<App />, document.getElementById('editor'));
-}
-
-if (document.getElementById('addDocument')) {
-    ReactDOM.render(<AddDocumentForm />, document.getElementById('addDocument'));
+if (document.getElementById('react')) {
+    ReactDOM.render(<MedContructor />, document.getElementById('react'));
 }

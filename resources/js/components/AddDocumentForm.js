@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router'
 
 const DOCUMENT_TEMPLATE = {
     type: null,
@@ -13,7 +14,8 @@ export default class AddDocumentForm extends React.Component {
       this.state = {
         selectedDocType: null,
         docTypes: [],
-        document: JSON.parse(JSON.stringify(DOCUMENT_TEMPLATE))
+        document: JSON.parse(JSON.stringify(DOCUMENT_TEMPLATE)),
+        redirectUrl: null
       }
 
       this.addDocument = this.addDocument.bind(this)
@@ -34,21 +36,25 @@ export default class AddDocumentForm extends React.Component {
 
     addDocument() {
         const model = JSON.stringify(this.state.document)
-        fetch('/addDocument', {
+        fetch('/documents', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: model
         })
-            .then(res => res.text())
-            .then(text => console.log(text))
+            .then(res => res.json())
+            .then(document => {
+                this.setState({
+                    redirectUrl: '/my-documents'
+                })
+            })
     }
 
     setDocumentType(doctype) {
         this.setState({
             selectedDocType: doctype,
-            document: JSON.parse(JSON.stringify({...DOCUMENT_TEMPLATE, type: doctype.type}))
+            document: JSON.parse(JSON.stringify({...DOCUMENT_TEMPLATE, type: doctype.id}))
         })
     }
 
@@ -72,6 +78,11 @@ export default class AddDocumentForm extends React.Component {
     }
     
     render() {
+
+        if (this.state.redirectUrl) {
+            return <Redirect to={this.state.redirectUrl} />
+        }
+
         return <div className="AddDocumentFrom">
             <h1>Создание документа</h1>
 

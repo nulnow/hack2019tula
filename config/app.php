@@ -135,7 +135,7 @@ return [
     */
 
     'providers' => [
-
+        Elibyy\TCPDF\ServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */
@@ -190,6 +190,8 @@ return [
     */
 
     'aliases' => [
+
+        'PDF' => Elibyy\TCPDF\Facades\TCPDF::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

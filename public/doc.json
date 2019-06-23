@@ -1,14 +1,17 @@
 [
     {
         "name": "date",
-        "label": "Дата"
+        "label": "Дата",
+        "cords": [30, 30]
     },
     {
         "name": "fio",
-        "label": "Фио"
+        "label": "Фио",
+        "cords": [30, 60]
     },
     {
         "name": "doctor",
-        "label": "Врач"
+        "label": "Врач",
+        "cords": [30, 90]
     }
 ]
