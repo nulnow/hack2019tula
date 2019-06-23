@@ -3,7 +3,7 @@ import Spinner from './Spinner';
 import Table from './Table';
 import Filters from './Filters';
 
-const DEFAULT_URL = 'http://localhost:8000/documents';
+const DEFAULT_URL = location.origin + '/documents';
 
 class App extends React.Component {
 
