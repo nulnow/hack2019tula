@@ -10,18 +10,10 @@ class Navbar extends React.Component {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-                {window.loggedIn
-                    ? <>
-                        <Link to='/add-document-type' className="nav-item nav-link" >Добавить тип документа</Link>
-                        <Link to='/add-document' className="nav-item nav-link" >Создать документ</Link>
-                        <Link to='/my-documents' className="nav-item nav-link" >Мои документы</Link>
-                        <a className="nav-item nav-link" href="/logout">Выйти</a>
-                    </>
-                    : <>
-                        <a className="nav-item nav-link" href="/login">Логин</a>
-                    </>
-                }
+                <div className="navbar-nav">
+                    <Link to='/add-document-type' className="nav-item nav-link" >Добавить тип документа</Link>
+                    <Link to='/add-document' className="nav-item nav-link" >Создать документ</Link>
+                    <Link to='/my-documents' className="nav-item nav-link" >Мои документы</Link>
                 </div>
             </div>
         </nav>

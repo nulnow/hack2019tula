@@ -1,13 +1,54 @@
 .jumbo {
+    position: relative;
+
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 
-    height: 80vh;
+    min-height: 80vh;
     
     background-image: url('https://previews.123rf.com/images/pressmaster/pressmaster1712/pressmaster171200747/91837876-medical-recommendation.jpg');
     background-size: cover;
+}
+
+.jubmo__moc {
+    position: absolute;
+    top: 10%;
+    right: 20px;
+
+    width: 700px;
+    height: 470px;
+
+    background-image: url('/mock.png');
+    background-size: cover;
+}
+
+.jubmo__moc2 {
+    position: absolute;
+    top: 25%;
+    right: 100px;
+
+    width: 220px;
+    height: 400px;
+
+    background-image: url('/mock2.png');
+    background-size: cover;
+}
+
+@media (max-width: 1200px) {
+    .jubmo__moc {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .jubmo__moc2 {
+        position: static;
+        width: 420;
+        height: 650;
+        margin: 0 auto;
+    }
 }
 
 .blured-line {
@@ -18,4 +59,8 @@
     color: white;
 
     background-color: rgba(0,0,0, 0.4);
+}
+
+.navbar-toggler-icon {
+    background-image: url('https://cdn2.iconfinder.com/data/icons/bold-ui/100/hamburger-512.png')
 }
