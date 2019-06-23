@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/app.css">
     <title>Document</title>
+    @auth
+        <script>
+            window.loggedIn = true
+        </script>
+    @endauth
 </head>
 <body>
     <div id="react"></div>

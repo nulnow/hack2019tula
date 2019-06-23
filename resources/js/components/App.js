@@ -118,7 +118,6 @@ class App extends React.Component {
       .then(link => {
         console.log(link)
         const imgWindow = window.open(window.location.origin + link)
-        imgWindow.focus()
         imgWindow.print()
       })
   }
@@ -143,7 +142,7 @@ class App extends React.Component {
 
     return (
       <div className="container">
-        <div className="data-grid">
+        <div className="Card">
         <Filters
             onFilterChange={this.onFilterChange}
             onPerPageChange={this.onPerPageChange}

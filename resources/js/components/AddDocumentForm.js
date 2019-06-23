@@ -83,7 +83,7 @@ export default class AddDocumentForm extends React.Component {
             return <Redirect to={this.state.redirectUrl} />
         }
 
-        return <div className="AddDocumentFrom">
+        return <div className="Card">
             <h1>Создание документа</h1>
 
             {this.state.selectedDocType 
@@ -93,18 +93,18 @@ export default class AddDocumentForm extends React.Component {
                 </p>
             }
 
-            <h2>Доступные документы</h2>
+            <h2>Типы документов</h2>
             <div>
                 {this.state.docTypes.map(doctype => {
                     const fields = JSON.parse(doctype.fields)
-                    return <div key={doctype.id} onClick={() => this.setDocumentType(doctype)}>
-                        <p>{doctype.name}</p>
+                    return <div className="doctype" key={doctype.id} onClick={() => this.setDocumentType(doctype)}>
+                        <p className="doctype__title">{doctype.name}</p>
 
-                        <ul>
+                        <p>
                             {fields.map(field => {
-                                return <li key={field.label}>{field.label}</li>
+                                return <span key={field.label}>{field.label}</span>
                             })}
-                        </ul>
+                        </p>
 
                     </div>
                 })}

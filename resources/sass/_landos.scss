@@ -1,0 +1,21 @@
+.jumbo {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    height: 80vh;
+    
+    background-image: url('https://previews.123rf.com/images/pressmaster/pressmaster1712/pressmaster171200747/91837876-medical-recommendation.jpg');
+    background-size: cover;
+}
+
+.blured-line {
+    width: 100%;
+
+    padding: 30px;
+
+    color: white;
+
+    background-color: rgba(0,0,0, 0.4);
+}

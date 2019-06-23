@@ -26,6 +26,11 @@ Route::get('/printDocument/{document}', 'API@printDocument');
 
 Auth::routes();
 
+Route::get('/logout', function() {
+    Auth::logout();
+    return redirect('/');
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['role:admin'])->prefix('web-api')->group(function() {

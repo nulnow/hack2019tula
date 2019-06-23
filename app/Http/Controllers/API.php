@@ -18,7 +18,7 @@ class API extends Controller
 
     public function docTypes()
     {
-        return DocType::all();
+        return DocType::orderBy('id', 'desc')->get();
     }
 
     public function addDoctype(Request $request)
@@ -39,7 +39,7 @@ class API extends Controller
 
     public function documents()
     {
-        return Document::all();
+        return Document::orderBy('id', 'desc')->get();
     }
 
     public function addDocument(Request $request)

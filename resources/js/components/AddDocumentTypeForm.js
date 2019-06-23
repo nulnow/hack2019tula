@@ -150,7 +150,7 @@ class AddDocumentTypeForm extends React.Component {
             return <Redirect to={this.state.redirectUrl} />
         }
 
-        return <div>
+        return <div className="Card">
             <h2>Добавление типа документа</h2>
             <div>
                 <label>
@@ -196,10 +196,10 @@ class AddDocumentTypeForm extends React.Component {
                                     <p>{JSON.stringify(this.state.fields[i].cords)}</p>
                                 </td>
                                 <td>
-                                    <button onClick={() => this.onDeleteField(i)}>Удалить поле</button>
+                                    <button className="btn btn-light" onClick={() => this.onDeleteField(i)}>Удалить поле</button>
                                 </td>
                                 <td>
-                                    <button onClick={() => this.onCordsChange(i)}>
+                                    <button className="btn btn-light" onClick={() => this.onCordsChange(i)}>
                                         {
                                             this.state.filedIdToChangeCords === i
                                                 ? 'Сохранить'
@@ -209,15 +209,16 @@ class AddDocumentTypeForm extends React.Component {
                                 </td>
                             </tr>
                         })}
-                        <button onClick={this.onAddField}>Добавить поле</button>
+                        <button className="btn btn-light" onClick={this.onAddField}>Добавить поле</button>
 
                     </tbody>
                 </table>
             }
             <div>
-                <button onClick={this.submit}>Добавть тип документа</button>
+                <button className="btn btn-primary" onClick={this.submit}>Добавть тип документа</button>
                 {this.filedIdToChangeCords !== null && (
                 <button
+                    className="btn btn-danger"
                     onClick={() => {
                         this.fileInput.value = ''
                         this.setState(JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(INITIAL_STATE)))))
