@@ -3,7 +3,7 @@ import { Redirect } from 'react-router'
 
 const FIELD_TEMPLATE = {
     name: makeid(10),
-    label: 'Поле',
+    label: '',
     cords: [0, 0]
 }
 
@@ -55,6 +55,26 @@ class AddDocumentTypeForm extends React.Component {
             fields: this.state.fields
         }
 
+        if(!model.name) {
+            alert('Не заполнено имя документа')
+            return
+        }
+
+        if(!model.url) {
+            alert('Не добавлено изображение документа')
+            return
+        }
+
+        if (this.state.fields.filter(f => f.label === '').length) {
+            alert('Не заполнены поля документа')
+            return
+        }
+
+        if (this.state.fields.filter(f => (f.cords[0] === 0) || (f.cords[1] === 0)).length) {
+            alert('Не у всех полей указаны координаты')
+            return
+        }
+
         fetch('/doctypes', {
             method: 'POST',
             headers: {
@@ -62,17 +82,15 @@ class AddDocumentTypeForm extends React.Component {
             },
             body: JSON.stringify(model)
         })
-            .then(res => res.text())
-            .then(text => {
-                console.log(text)
-            })
-            .then(doctype => {
-                console.log(doctype)
+            .then(() => {
                 this.setState({
                     redirectUrl: '/add-document'
                 })
             })
-            .catch(e => console.log(e))
+            .catch(e => {
+                console.log(e)
+                alert('Произошла непредвиденная ошибка 😎😎😎')
+            })
 
         
     }

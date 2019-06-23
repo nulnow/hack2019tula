@@ -35,6 +35,12 @@ export default class AddDocumentForm extends React.Component {
     }
 
     addDocument() {
+        
+        if (!Object.values(this.state.document.fields).filter(v => !!v).length) {
+            alert('Заполнены не все поля (если поле нужно пропустить, то введите пробел)')
+            return
+        }
+
         const model = JSON.stringify(this.state.document)
         fetch('/documents', {
             method: 'POST',
@@ -48,6 +54,10 @@ export default class AddDocumentForm extends React.Component {
                 this.setState({
                     redirectUrl: '/my-documents'
                 })
+            })
+            .catch(e => {
+                console.log(e)
+                alert('Произошла непредвиденная ошибка 😎😎😎')
             })
     }
 
