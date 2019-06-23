@@ -94,7 +94,7 @@ export default class AddDocumentForm extends React.Component {
         }
 
         return <div className="Card">
-            <h1>Создание документа</h1>
+            <h1 style={{textAlign: 'center'}}>Создание документа</h1>
 
             {this.state.selectedDocType 
                 && <p>
@@ -103,22 +103,29 @@ export default class AddDocumentForm extends React.Component {
                 </p>
             }
 
-            <h2>Типы документов</h2>
-            <div>
-                {this.state.docTypes.map(doctype => {
-                    const fields = JSON.parse(doctype.fields)
-                    return <div className="doctype" key={doctype.id} onClick={() => this.setDocumentType(doctype)}>
-                        <p className="doctype__title">{doctype.name}</p>
+            <div className="card">
+                <div className="card-header">
+                  Типы документов
+                </div>
+                <div className="card-body">
+                    <div>
+                        {this.state.docTypes.map(doctype => {
+                            const fields = JSON.parse(doctype.fields)
+                            return <div className="doctype" key={doctype.id} onClick={() => this.setDocumentType(doctype)}>
+                                <p className="doctype__title">{doctype.name}</p>
 
-                        <p>
-                            {fields.map(field => {
-                                return <span key={field.label}>{field.label}</span>
-                            })}
-                        </p>
+                                <p>
+                                    {fields.map(field => {
+                                        return <span key={field.label}>{field.label}</span>
+                                    })}
+                                </p>
 
+                            </div>
+                        })}
                     </div>
-                })}
+                </div>
             </div>
+
             {this.state.selectedDocType && <div>
                 {JSON.parse(this.state.selectedDocType.fields).map((field, i) => {
                     return <div key={field.name}>
