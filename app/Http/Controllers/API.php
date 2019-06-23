@@ -57,23 +57,6 @@ class API extends Controller
         return $document;
     }
 
-    public function add📄(Request $request)
-    {
-        try {
-            $📄 = new Document();
-
-            $📄->json_body = $request->input('json_body');
-            $📄->type = 1;
-    
-            $📄->save();
-            $📄->refresh();
-    
-            return $📄;
-        } catch(\Exception $e) {
-            return $e;
-        }
-    }
-
     public function printDocument(Document $document, Request $request)
     {
         $type = $document->type;
