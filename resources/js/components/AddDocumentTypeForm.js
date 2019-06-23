@@ -169,7 +169,7 @@ class AddDocumentTypeForm extends React.Component {
         }
 
         return <div className="Card">
-            <h2 style={{textAlign: 'center'}}>Добавление типа документа</h2>
+            <h2 style={{textAlign: 'center'}}>Добавление типа документа (.jpg)</h2>
             <div>
                 <label>
                     <p>Название типа документа</p>
